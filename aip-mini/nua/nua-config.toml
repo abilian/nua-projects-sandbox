@@ -1,0 +1,50 @@
+[metadata]
+id = "aip-mini"
+title = "AIP Mini"
+author = "Abilian"
+description = ""
+version = "0.1"
+release = 1
+license = "MIT"
+
+[build]
+project = "."
+# builder = ""
+packages = [
+    "build-essential",
+    "git",
+    "python3-dev",
+    # For magic
+    "libmagic-dev",
+]
+
+[run]
+start = [
+    "flask config show",
+    "gunicorn --chdir /nua/build -b 0.0.0.0:5000 'app.main:create_app()'",
+]
+
+[port.web]
+container = 5000
+
+[env]
+DB_HOST = { from = "database", key = "hostname" }
+DB_DATABASE = { from = "database", key = "POSTGRES_DB" }
+DB_USER = { from = "database", key = "POSTGRES_USER" }
+DB_PASSWORD = { from = "database", key = "POSTGRES_PASSWORD" }
+FLASK_SQLALCHEMY_DATABASE_URI = "postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_DATABASE}"
+
+REDIS_HOST = { from = "redis", key = "hostname" }
+REDIS_PORT = { from = "redis", key = "REDIS_PORT" }
+FLASK_REDIS_URL = "redis://{REDIS_HOST}:{REDIS_PORT}/0"
+FLASK_RQ_DASHBOARD_REDIS_URL = "{FLASK_REDIS_URL}"
+
+[[resource]]
+name = "database"
+type = "postgres"
+version = ">=14, <15"
+
+[[resource]]
+name = "redis"
+type = "redis-cache"
+version = ">=7"

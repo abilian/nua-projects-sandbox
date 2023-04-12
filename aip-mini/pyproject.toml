@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "aip-mini"
+version = "0.1.0"
+description = ""
+authors = ["Stefane Fermigier <sf@fermigier.com>"]
+# readme = "README.md"
+packages = [{ include = "app", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10,<3.12"
+
+# Flask
+flask = "^2.2.3"
+flask-babel = "^3.0.1"
+flask-mailing = "^0.2.2"
+flask-migrate = "^4.0.4"
+flask-security-too = "^5.1.2"
+flask-login = "*"
+flask-talisman = "^1.0.0"
+flask-vite = "^0.2.3"
+flask-wtf = "^1.1.1"
+flask-sqlalchemy = "^3.0.3"
+
+sqlalchemy = "^2.0.9"
+sqlalchemy-utils = "^0.40.0"
+psycopg2 = "^2.9.6"
+
+# Queues (TODO: choose which one we use)
+wakaq = "^2.0.2"
+flask-rq2 = "^18.3"
+rq-dashboard-fork = {git = "https://github.com/abilian/rq-dashboard-fork.git", branch = "main"}
+redis = "^4.5.4"
+gunicorn = "^20.1.0"
+loguru = "^0.7.0"
+devtools = "^0.11.0"
+dynaconf = "^3.1.12"
+python-dotenv = "^1.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+invoke = "^2.0.0"
+toml = "^0.10.2"
+abilian-devtools = "^0.4.18"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
