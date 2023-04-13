@@ -35,6 +35,7 @@ loguru = "^0.7.0"
 devtools = "^0.11.0"
 dynaconf = "^3.1.12"
 python-dotenv = "^1.0.0"
+snoop = "^0.4.3"
 
 
 [tool.poetry.group.dev.dependencies]
