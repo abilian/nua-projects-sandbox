@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 import os
+import sys
 
 import click
-from devtools import debug
 from flask import Flask, current_app
 from flask.cli import with_appcontext
 from rich import print
+from snoop import pp
 
 
 def register_commands(app: Flask) -> None:
@@ -17,10 +18,10 @@ def register_commands(app: Flask) -> None:
 @with_appcontext
 def config() -> None:
     config_ = dict(sorted(current_app.config.items()))
-    print("CONFIG:")
-    debug(config_)
+    print("CONFIG:", file=sys.stderr)
+    pp(config_)
     print()
 
-    print("ENV:")
+    print("ENV:", file=sys.stderr)
     env_ = dict(sorted(os.environ.items()))
-    debug(env_)
+    pp(env_)
