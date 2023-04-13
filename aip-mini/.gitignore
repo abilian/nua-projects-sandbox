@@ -1,0 +1,46 @@
+# Cruft
+*.egg-info/
+*.pyc
+*.sqlite*
+.cache/
+.coverage
+.eggs/
+.venv
+.hypothesis/
+
+# Secret
+.env
+/etc/secrets.toml
+
+# Other
+/tmp
+/data
+/static-old
+/front-old
+/sandbox
+/doc/site
+/OLD
+
+# Generated
+__pycache__/
+env
+node_modules/
+.devenv*
+devenv.local.nix
+
+# More
+.clever.json
+.envrc
+vite/yarn.lock
+
+doc/overrides/partials/integrations/analytics/custom.html
+src/app/apps/public/templates/sandbox
+src/app/models/geo.py
+
+# Not ready
+src/app/modules/superadmin
+src/app/modules/auth
+src/app/sandbox
+
+#
+/data/

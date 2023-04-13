@@ -28,6 +28,8 @@ start = [
 container = 5000
 
 [env]
+FLASK_ENV = "production"
+
 DB_HOST = { from = "database", key = "hostname" }
 DB_DATABASE = { from = "database", key = "POSTGRES_DB" }
 DB_USER = { from = "database", key = "POSTGRES_USER" }
