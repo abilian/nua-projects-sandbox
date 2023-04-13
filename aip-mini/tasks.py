@@ -63,7 +63,7 @@ def nua_build_(c: Context, host=NUA_HOST):
     ssh(f"mkdir -p {build_dir}", host=host)
     sh(f"rsync -e ssh --delete-after -az {excludes_args} ./ nua@{host}:{build_dir}")
 
-    ssh(f"{NUA_ENV}/bin/nua-build {build_dir}", host)
+    ssh(f"{NUA_ENV}/bin/nua-build -vvv {build_dir}", host)
 
     # sh(f"nua-build .", cwd=cwd)
     print()

@@ -20,7 +20,7 @@ packages = [
 
 [run]
 start = [
-    "flask config show",
+    "flask config",
     "gunicorn --chdir /nua/build -b 0.0.0.0:5000 'app.main:create_app()'",
 ]
 
@@ -37,7 +37,7 @@ FLASK_SQLALCHEMY_DATABASE_URI = "postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/
 REDIS_HOST = { from = "redis", key = "hostname" }
 REDIS_PORT = { from = "redis", key = "REDIS_PORT" }
 FLASK_REDIS_URL = "redis://{REDIS_HOST}:{REDIS_PORT}/0"
-FLASK_RQ_DASHBOARD_REDIS_URL = "{FLASK_REDIS_URL}"
+FLASK_RQ_DASHBOARD_REDIS_URL = "redis://{REDIS_HOST}:{REDIS_PORT}/0"
 
 [[resource]]
 name = "database"

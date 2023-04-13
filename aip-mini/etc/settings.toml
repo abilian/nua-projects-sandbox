@@ -102,5 +102,5 @@ DEBUG_TB_INTERCEPT_REDIRECTS = false
 
 
 [production]
-SERVER_NAME = "mini-aip.c17.abilian.com"
+SERVER_NAME = "aip-mini.c17.abilian.com"
 PREFERRED_URL_SCHEME = "https"
