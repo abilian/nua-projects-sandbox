@@ -1,17 +1,21 @@
 from __future__ import annotations
 
 import os
+import sys
 import time
 
 import rq_dashboard
-from app import views
 from devtools import debug
 from dynaconf import FlaskDynaconf
 from flask import Flask, g, request, session
 from flask_talisman import DEFAULT_CSP_POLICY, Talisman
 from jinja2 import StrictUndefined
+from snoop import pp
+
+from app import views
 
 from .cli import register_commands
+from .extensions import register_extensions
 from .logging import configure_loguru
 
 
@@ -47,6 +51,8 @@ def configure_app(app, config) -> None:
     # FIXME
     app.config = dict(sorted(app.config.items()))
 
+    dump_config(app)
+
     # Heroku
     database_url = os.environ.get("DATABASE_URL", "")
     if not database_url:
@@ -62,6 +68,19 @@ def configure_app(app, config) -> None:
     redis_url = os.environ.get("REDISCLOUD_URL", "")
     if redis_url:
         app.config["REDIS_URL"] = redis_url
+
+    register_extensions(app)
+
+
+def dump_config(app: Flask):
+    config_ = dict(sorted(app.config.items()))
+    print("CONFIG:", file=sys.stderr)
+    pp(config_)
+    print()
+
+    print("ENV:", file=sys.stderr)
+    env_ = dict(sorted(os.environ.items()))
+    pp(env_)
 
 
 def register_blueprints(app: Flask) -> None:

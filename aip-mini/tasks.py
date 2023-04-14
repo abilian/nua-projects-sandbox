@@ -106,7 +106,7 @@ def ssh(cmd: str, host: str):
     """Run a ssh command."""
     print(f'{DIM}Running "{cmd}" on server...{RESET}')
     args = shlex.split(cmd)
-    cmd = ["ssh", f"nua@{host}", f'{shlex.join(args)}']
+    cmd = ["ssh", f"nua@{host}", f"{shlex.join(args)}"]
     try:
         subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as e:
