@@ -8,34 +8,17 @@ release = 1
 license = "MIT"
 
 [build]
-src = "."
-
 # Builder is autodetected
-# builder = ""
-
-# For nua-build
 packages = [
+    "python3-dev",
     "build-essential",
     "git",
-    "python3-dev",
-    # For magic
-    "libmagic-dev",
-    # For postgres
-    "libpq-dev",
-]
-
-# For nua-sandbox
-build-packages = [
-    "build-essential",
-    "git",
-    "python3-dev",
-    # For magic
-    "libmagic-dev",
-    # For postgres
-    "libpq-dev",
 ]
 
 [run]
+packages = [
+    "libmagic-dev",
+]
 start = [
     "flask config",
     "gunicorn --chdir /nua/build -b 0.0.0.0:5000 'app.main:create_app()'",
