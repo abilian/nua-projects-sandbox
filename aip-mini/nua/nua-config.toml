@@ -8,14 +8,31 @@ release = 1
 license = "MIT"
 
 [build]
-project = "."
+src = "."
+
+# Builder is autodetected
 # builder = ""
+
+# For nua-build
 packages = [
     "build-essential",
     "git",
     "python3-dev",
     # For magic
     "libmagic-dev",
+    # For postgres
+    "libpq-dev",
+]
+
+# For nua-sandbox
+build-packages = [
+    "build-essential",
+    "git",
+    "python3-dev",
+    # For magic
+    "libmagic-dev",
+    # For postgres
+    "libpq-dev",
 ]
 
 [run]

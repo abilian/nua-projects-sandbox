@@ -14,9 +14,9 @@ NUA_HOST = "c17.abilian.com"
 NUA_DOMAIN = "aip-mini.c17.abilian.com"
 NUA_ENV = "/home/nua/env"
 
-DIM = "\033[2m"
 RESET = "\033[0m"
 BRIGHT = "\033[1m"
+DIM = "\033[2m"
 
 EXCLUDES = [
     ".git",
