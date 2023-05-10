@@ -21,7 +21,7 @@ test:
 
 ##
 lint/ruff:
-	ruff src tests/test*.py
+	ruff src tests
 
 ## Lint source code and check typing
 lint:

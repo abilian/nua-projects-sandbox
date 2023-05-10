@@ -28,7 +28,6 @@ psycopg2 = "^2.9.6"
 # Queues (TODO: choose which one we use)
 wakaq = "^2.0.2"
 flask-rq2 = "^18.3"
-rq-dashboard-fork = {git = "https://github.com/abilian/rq-dashboard-fork.git", branch = "main"}
 redis = "^4.5.4"
 gunicorn = "^20.1.0"
 loguru = "^0.7.0"

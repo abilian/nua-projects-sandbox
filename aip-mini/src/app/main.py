@@ -4,7 +4,6 @@ import os
 import sys
 import time
 
-import rq_dashboard
 from devtools import debug
 from dynaconf import FlaskDynaconf
 from flask import Flask, g, request, session
@@ -12,8 +11,7 @@ from flask_talisman import DEFAULT_CSP_POLICY, Talisman
 from jinja2 import StrictUndefined
 from snoop import pp
 
-from app import views
-
+from . import views
 from .cli import register_commands
 from .extensions import register_extensions
 from .logging import configure_loguru
@@ -136,4 +134,4 @@ def register_perf_watcher(app: Flask) -> None:
 
 
 def register_extra_apps(app: Flask) -> None:
-    app.register_blueprint(rq_dashboard.blueprint, url_prefix="/rq")
+    pass
